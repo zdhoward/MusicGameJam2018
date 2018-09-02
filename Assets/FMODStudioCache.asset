@@ -1,0 +1,104 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
+  m_Name: FMODStudioCache
+  m_EditorClassIdentifier: 
+  EditorBanks:
+  - {fileID: 114534452794668906}
+  - {fileID: 114580208975016768}
+  EditorEvents:
+  - {fileID: 114012242327775330}
+  - {fileID: 114813566700853992}
+  MasterBankRef: {fileID: 114580208975016768}
+  StringsBankRef: {fileID: 114534452794668906}
+  stringsBankWriteTime: 636714168857734392
+  cacheVersion: 2
+--- !u!114 &114012242327775330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Music/BGM
+  guid: a96564ebbf7a834a8b500c65a128479f
+  Banks:
+  - {fileID: 114580208975016768}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 0
+--- !u!114 &114534452794668906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: Assets\Audio\FMOD Project\MusicGameJam2018\Build\Desktop\Master Bank.strings.bank
+  lastModified: 636714168857734392
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 780
+  Exists: 1
+--- !u!114 &114580208975016768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: D:\Projects\Game Jams\MusicGameJam2018\Assets\Audio\FMOD Project\MusicGameJam2018\Build\Desktop\Master
+    Bank.bank
+  lastModified: 636714168857674298
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 1126176
+  Exists: 1
+--- !u!114 &114813566700853992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Debug/Random Event
+  guid: 1acc7b58d6cae5469ceeae90847c0a27
+  Banks:
+  - {fileID: 114580208975016768}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 101760
