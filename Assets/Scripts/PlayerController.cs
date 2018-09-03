@@ -14,17 +14,25 @@ public class PlayerController : MonoBehaviour
     public Boundary boundary;
 
     public GameObject shot;
-    public Transform shotSpawn;
+    Transform shotSpawn;
     public float fireRate;
 
     private float nextFire;
+
+    void Start()
+    {
+        shotSpawn = gameObject.transform;
+        //shotSpawn.position = gameObject.transform.position + new Vector3(3f,0f,0f);
+        //shotSpawn.rotation = gameObject.transform.rotation;
+    }
 
     void Update()
     {
         if (Input.GetButton("Fire1") && Time.time > nextFire)
         {
             nextFire = Time.time + fireRate;
-            Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
+            var obj = Instantiate(shot, shotSpawn.position + new Vector3(1,0,0), shotSpawn.rotation);
+            obj.GetComponent<Mover>().speed = 20;
             //GetComponent<AudioSource>().Play();
         }
     }

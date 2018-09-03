@@ -9,7 +9,7 @@
 [LOG] Thread::initThread                       : Init FMOD stream thread. Priority: 2, Stack Size: 65536, Semaphore: No, Sleep Time: 10, Looping: Yes.
 [LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
 [LOG] Thread::initThread                       : Init FMOD mixer thread. Priority: 3, Stack Size: 49152, Semaphore: No, Sleep Time: 0, Looping: Yes.
-[LOG] AsyncManager::init                       : manager 000000005257CAD8 isAsync 1 updatePeriod 0.02
+[LOG] AsyncManager::init                       : manager 00000000464F6B18 isAsync 1 updatePeriod 0.02
 [LOG] Thread::initThread                       : Init FMOD Studio update thread. Priority: 0, Stack Size: 65536, Semaphore: No, Sleep Time: 1, Looping: No.
 [LOG] AsyncManager::init                       : done
 [LOG] PlaybackSystem::init                     : 
@@ -25,25 +25,25 @@
 [LOG] SystemI::createSound                     : filename = Assets\Audio\FMOD Project\MusicGameJam2018\Build\Desktop/Master Bank.bank : mode 02010082
 [LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
 [LOG] Thread::initThread                       : Init FMOD nonblocking thread (0). Priority: 1, Stack Size: 81920, Semaphore: Yes, Sleep Time: 0, Looping: Yes.
-[LOG] SystemI::createSound                     : setdata soundi = 000000001E9E5FB8 : node = 00000000462AC9F0
-[LOG] SystemI::createSound                     : add node to async list : head = 0000000045B74058.  list count = 0
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000000001E9E5FB8
+[LOG] SystemI::createSound                     : setdata soundi = 000000001F109648 : node = 00000000007D7630
+[LOG] SystemI::createSound                     : add node to async list : head = 0000000046285048.  list count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000000001F109648
 [LOG] SystemI::createSoundInternal             :     Create name='Assets\Audio\FMOD Project\MusicGameJam2018\Build\Desktop/Master Bank.bank', mode=0x02010082
 [LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 232
 [LOG] SystemI::createSoundInternal             :     exinfo->length             = 587776
 [LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 14272
 [LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 00000000462ACB08
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 00000000007D7748
 [LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
 [LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
 [LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
 [LOG] SystemI::createSoundInternal             :     Stream 0/1: name='LS_audio_loop_MainMenuMusic', format=2, channels=2, frequency=48000, lengthbytes=587296, lengthpcm=2145000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.944092.
 [LOG] Thread::initThread                       :     Init FMOD file thread. Priority: 1, Stack Size: 16384, Semaphore: No, Sleep Time: 10, Looping: Yes.
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000000001E9E5FB8
-[LOG] SoundI::getSubSound                      : sound 000000001E9E5FB8.  Subsound index 0 / 1
-[LOG] SoundI::release                          : LS_audio_loop_MainMenuMusic (000000001E9E5FB8)
-[LOG] SoundI::release                          :     LS_audio_loop_MainMenuMusic (0000000045B74248)
-[LOG] SoundI::release                          :     LS_audio_loop_MainMenuMusic (000000001E9E64C8)
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000000001F109648
+[LOG] SoundI::getSubSound                      : sound 000000001F109648.  Subsound index 0 / 1
+[LOG] SoundI::release                          : LS_audio_loop_MainMenuMusic (000000001F109648)
+[LOG] SoundI::release                          :     LS_audio_loop_MainMenuMusic (0000000046285238)
+[LOG] SoundI::release                          :     LS_audio_loop_MainMenuMusic (000000001F108C28)
 [LOG] Thread::callback                         : FMOD Studio update thread finished.
 [LOG] Thread::callback                         : FMOD Studio bank load thread finished.
 [LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
