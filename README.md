@@ -1,3 +1,3 @@
 # MusicGameJam2018
 
-Side View Shoot Em Up
+Cthulu Themes Side View Shoot Em Up
