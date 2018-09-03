@@ -55,7 +55,7 @@ public class FMODToolbox : MonoBehaviour {
         if (fftData.numchannels > 0)
         {
             var pos = Vector3.zero;
-            pos.x = WIDTH * -0.5f;
+            pos.x = WIDTH * -0.5f + 6;
 
             for (int i = 0; i < WindowSize - (int)(WindowSize*0.2); ++i)
             {
