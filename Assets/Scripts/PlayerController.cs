@@ -14,10 +14,17 @@ public class PlayerController : MonoBehaviour
     public Boundary boundary;
 
     public GameObject shot;
-    public Transform shotSpawn;
+    Transform shotSpawn;
     public float fireRate;
 
     private float nextFire;
+
+    void Start()
+    {
+        shotSpawn = gameObject.transform;
+        //shotSpawn.position = gameObject.transform.position + new Vector3(3f,0f,0f);
+        //shotSpawn.rotation = gameObject.transform.rotation;
+    }
 
     void Update()
     {
