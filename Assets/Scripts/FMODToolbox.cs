@@ -20,6 +20,13 @@ public class FMODToolbox : MonoBehaviour {
 
     public float [][] _spectrum;
 
+    [StructLayout(LayoutKind.Sequential)]
+    class TimelineInfo
+    {
+        public int currentMusicBar = 0;
+        public FMOD.StringWrapper lastMarker = new FMOD.StringWrapper();
+    }
+
     // Use this for initialization
     void Start () {
         //_spectrum = new Array2D();

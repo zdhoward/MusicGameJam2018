@@ -21,6 +21,13 @@ public class GameController : MonoBehaviour
     private bool restart;
     private int score;
 
+    int beat = BGM.beats;
+    public int spawnOffset;
+
+    //public GameObject enemy;
+
+    int nextBeat;
+
     void Start()
     {
         gameOver = false;
@@ -29,7 +36,8 @@ public class GameController : MonoBehaviour
         //gameOverText.text = "";
         score = 0;
         UpdateScore();
-        StartCoroutine(SpawnWaves());
+        //StartCoroutine(SpawnWaves());
+        nextBeat = spawnOffset;
     }
 
     void Update()
@@ -40,6 +48,13 @@ public class GameController : MonoBehaviour
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
+        }
+
+        if (BGM.beats > nextBeat)
+        {
+            Vector3 spawnPosition = new Vector3(spawnValues.x, Random.Range(0, spawnValues.y), spawnValues.z);
+            SpawnEnemy(spawnPosition, hazards[0]);
+            nextBeat += spawnOffset;
         }
     }
 
@@ -65,6 +80,12 @@ public class GameController : MonoBehaviour
                 break;
             }
         }
+
+    }
+
+    void SpawnEnemy(Vector3 pos, GameObject type)
+    {
+        Instantiate(type, pos, Quaternion.identity);
     }
 
     public void AddScore(int newScoreValue)
