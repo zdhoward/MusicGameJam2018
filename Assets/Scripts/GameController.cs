@@ -21,6 +21,11 @@ public class GameController : MonoBehaviour
     private bool restart;
     private int score;
 
+    int beat = BGM.beats;
+    public int spawnOffset;
+
+    int nextBeat;
+
     void Start()
     {
         gameOver = false;
@@ -29,7 +34,7 @@ public class GameController : MonoBehaviour
         //gameOverText.text = "";
         score = 0;
         UpdateScore();
-        StartCoroutine(SpawnWaves());
+        nextBeat = spawnOffset;
     }
 
     void Update()
@@ -41,30 +46,19 @@ public class GameController : MonoBehaviour
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
         }
-    }
 
-    IEnumerator SpawnWaves()
-    {
-        yield return new WaitForSeconds(startWait);
-        while (true)
+        if (BGM.beats > nextBeat)
         {
-            for (int i = 0; i < hazardCount; i++)
-            {
-                GameObject hazard = hazards[Random.Range(0, hazards.Length)];
-                Vector3 spawnPosition = new Vector3(spawnValues.x, Random.Range(0, spawnValues.y), spawnValues.z);
-                Quaternion spawnRotation = Quaternion.identity;
-                Instantiate(hazard, spawnPosition, spawnRotation);
-                yield return new WaitForSeconds(spawnWait);
-            }
-            yield return new WaitForSeconds(waveWait);
-
-            if (gameOver)
-            {
-                //restartText.text = "Press 'R' for Restart";
-                restart = true;
-                break;
-            }
+            Vector3 spawnPosition = new Vector3(spawnValues.x, Random.Range(0, spawnValues.y), spawnValues.z);
+            var tmp = SpawnEnemy(spawnPosition, hazards[0]);
+            tmp.GetComponent<Mover>().target = new Vector3(spawnPosition.x + 20, spawnPosition.y, 0);
+            nextBeat += spawnOffset;
         }
+    }
+    
+    GameObject SpawnEnemy(Vector3 pos, GameObject type)
+    {
+        return Instantiate(type, pos, Quaternion.identity);
     }
 
     public void AddScore(int newScoreValue)

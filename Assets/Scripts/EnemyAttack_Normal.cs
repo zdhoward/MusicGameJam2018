@@ -6,24 +6,34 @@ public class EnemyAttack_Normal : MonoBehaviour {
 
     public GameObject shot;
 
+    int beat;
+
+    Vector3 target;
+
     Transform shotSpawn;
 
     public int rateOfFire; // normal 2 = every 1/2 note
 
 	// Use this for initialization
 	void Start () {
-        shotSpawn = gameObject.transform;
-        StartCoroutine("Fire");
+        beat = BGM.beats;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+        if (beat + rateOfFire <= BGM.beats)
+        {
+            shotSpawn = gameObject.transform;
+            target = GameObject.Find("Player").transform.position;
+            Fire();
+            beat = BGM.beats;
+        }
 	}
 
     void Fire ()
     {
-        var obj = Instantiate(shot, shotSpawn.position + new Vector3(-1,0,0), shotSpawn.rotation);
-        obj.GetComponent<Mover>().speed = -20;
+        var obj = Instantiate(shot, shotSpawn.position + new Vector3(-1, 0, 0), shotSpawn.rotation);
+        obj.GetComponent<Mover>().speed = 8;
+        obj.GetComponent<Mover>().target = target + new Vector3(0,0,0);
     }
 }

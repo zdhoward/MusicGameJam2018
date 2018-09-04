@@ -22,8 +22,8 @@ GameObject:
   - component: {fileID: 212971275936724960}
   - component: {fileID: 50083030340775324}
   - component: {fileID: 70537755672066632}
-  - component: {fileID: 114194029235601854}
   - component: {fileID: 114363970262495286}
+  - component: {fileID: 114663707377293504}
   m_Layer: 0
   m_Name: Projectile_Normal
   m_TagString: Untagged
@@ -38,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1400185869172804}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.13, y: 5.44, z: 0}
+  m_LocalPosition: {x: 25.418135, y: 114.59704, z: 0}
   m_LocalScale: {x: 5, y: 2, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
@@ -79,18 +79,6 @@ CapsuleCollider2D:
   m_Offset: {x: -0.000000059604645, y: 0}
   m_Size: {x: 0.15, y: 0.18}
   m_Direction: 1
---- !u!114 &114194029235601854
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1400185869172804}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7d77671e19b66441adbd43dc63b76bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 20
 --- !u!114 &114363970262495286
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -105,6 +93,19 @@ MonoBehaviour:
   explosion: {fileID: 0}
   playerExplosion: {fileID: 0}
   scoreValue: 0
+--- !u!114 &114663707377293504
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1400185869172804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7d77671e19b66441adbd43dc63b76bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 20
+  target: {x: 0, y: 0, z: 0}
 --- !u!212 &212971275936724960
 SpriteRenderer:
   m_ObjectHideFlags: 1
