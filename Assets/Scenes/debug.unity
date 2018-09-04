@@ -243,7 +243,7 @@ MonoBehaviour:
     xMax: 13
     yMin: 0
     yMax: 8
-  shot: {fileID: 1400185869172804, guid: 0c1b1bc7cac271f4783e88815afe5af0, type: 2}
+  shot: {fileID: 1205793292915496, guid: d38444834c6a29b46af7815c96518b03, type: 2}
   fireRate: 0.2
 --- !u!114 &452081115
 MonoBehaviour:
@@ -619,7 +619,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hazards:
   - {fileID: 1290797782346686, guid: ac1ed980933f98f42806f39d4880fad1, type: 2}
-  spawnValues: {x: 10, y: 6, z: 0}
+  spawnValues: {x: 15, y: 6, z: 0}
   hazardCount: 3
   spawnWait: 1
   startWait: 1

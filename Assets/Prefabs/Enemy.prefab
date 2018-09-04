@@ -116,6 +116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: -3
+  target: {x: 0, y: 0, z: 0}
 --- !u!114 &114319460620962748
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -128,7 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shot: {fileID: 1400185869172804, guid: 0c1b1bc7cac271f4783e88815afe5af0, type: 2}
-  rateOfFire: 2
+  rateOfFire: 4
 --- !u!212 &212282936012248590
 SpriteRenderer:
   m_ObjectHideFlags: 1

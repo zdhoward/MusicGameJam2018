@@ -24,8 +24,6 @@ public class GameController : MonoBehaviour
     int beat = BGM.beats;
     public int spawnOffset;
 
-    //public GameObject enemy;
-
     int nextBeat;
 
     void Start()
@@ -36,7 +34,6 @@ public class GameController : MonoBehaviour
         //gameOverText.text = "";
         score = 0;
         UpdateScore();
-        //StartCoroutine(SpawnWaves());
         nextBeat = spawnOffset;
     }
 
@@ -53,39 +50,15 @@ public class GameController : MonoBehaviour
         if (BGM.beats > nextBeat)
         {
             Vector3 spawnPosition = new Vector3(spawnValues.x, Random.Range(0, spawnValues.y), spawnValues.z);
-            SpawnEnemy(spawnPosition, hazards[0]);
+            var tmp = SpawnEnemy(spawnPosition, hazards[0]);
+            tmp.GetComponent<Mover>().target = new Vector3(spawnPosition.x + 20, spawnPosition.y, 0);
             nextBeat += spawnOffset;
         }
     }
-
-    IEnumerator SpawnWaves()
+    
+    GameObject SpawnEnemy(Vector3 pos, GameObject type)
     {
-        yield return new WaitForSeconds(startWait);
-        while (true)
-        {
-            for (int i = 0; i < hazardCount; i++)
-            {
-                GameObject hazard = hazards[Random.Range(0, hazards.Length)];
-                Vector3 spawnPosition = new Vector3(spawnValues.x, Random.Range(0, spawnValues.y), spawnValues.z);
-                Quaternion spawnRotation = Quaternion.identity;
-                Instantiate(hazard, spawnPosition, spawnRotation);
-                yield return new WaitForSeconds(spawnWait);
-            }
-            yield return new WaitForSeconds(waveWait);
-
-            if (gameOver)
-            {
-                //restartText.text = "Press 'R' for Restart";
-                restart = true;
-                break;
-            }
-        }
-
-    }
-
-    void SpawnEnemy(Vector3 pos, GameObject type)
-    {
-        Instantiate(type, pos, Quaternion.identity);
+        return Instantiate(type, pos, Quaternion.identity);
     }
 
     public void AddScore(int newScoreValue)
