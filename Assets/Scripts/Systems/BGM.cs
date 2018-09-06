@@ -71,10 +71,7 @@ public class BGM : MonoBehaviour {
 
     void OnDestroy()
     {
-        musicInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
-        musicInstance.release();
-        timelineHandle.Free();
-        musicInstance.setUserData(IntPtr.Zero);
+        StopMusic();
 
     }
 
@@ -145,15 +142,36 @@ public class BGM : MonoBehaviour {
         channelGroup.addDSP(FMOD.CHANNELCONTROL_DSP_INDEX.HEAD, fft);
     }
 
+    void StopMusic()
+    {
+        musicInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+        musicInstance.release();
+        timelineHandle.Free();
+        musicInstance.setUserData(IntPtr.Zero);
+    }
+
+    public void SwitchToGameOverMusic()
+    {
+        StopMusic();
+        musicInstance = FMODUnity.RuntimeManager.CreateInstance("event:/Debug/BadEnd");
+        musicInstance.start();
+    }
+
     static float GetFFTInRange(int min, int max)
     {
         float avg = 0;
 
         for (int i = min; i <= max; i++)
         {
-            avg += spectrum[0][i];
+            try
+            {
+                avg += spectrum[0][i];
+            }
+            catch (Exception e)
+            {
+                Debug.Log(e);
+            }
         }
-
         return lin2dB(avg /= (max - min));
     }
 
@@ -172,7 +190,7 @@ public class BGM : MonoBehaviour {
             }
             catch (Exception e)
             {
-
+                Debug.Log(e);
             }
         }
 
@@ -194,7 +212,7 @@ public class BGM : MonoBehaviour {
             }
             catch (Exception e)
             {
-
+                Debug.Log(e);
             }
         }
 
@@ -215,7 +233,7 @@ public class BGM : MonoBehaviour {
                 avg += spectrum[0][i];
             } catch (Exception e)
             {
-                
+                Debug.Log(e);
             }
         }
 

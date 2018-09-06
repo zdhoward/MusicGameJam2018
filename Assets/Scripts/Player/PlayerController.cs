@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 [System.Serializable]
@@ -9,6 +10,9 @@ public class Boundary
 
 public class PlayerController : MonoBehaviour
 {
+    public int maxHealth;
+    public int health;
+
     public float speed;
     public float tilt;
     public Boundary boundary;
@@ -19,8 +23,13 @@ public class PlayerController : MonoBehaviour
 
     private float nextFire;
 
+    public Text healthText;
+
+    GameController gameController;
+
     void Start()
     {
+        gameController = GameObject.Find("GameController").GetComponent<GameController>();
         shotSpawn = gameObject.transform;
         //shotSpawn.position = gameObject.transform.position + new Vector3(3f,0f,0f);
         //shotSpawn.rotation = gameObject.transform.rotation;
@@ -36,6 +45,8 @@ public class PlayerController : MonoBehaviour
             obj.GetComponent<ProjectileMover>().target = GameObject.Find("Player").transform.position + new Vector3(100f,0f,0f);
             //GetComponent<AudioSource>().Play();
         }
+
+        UpdateHealthText();
     }
 
     void FixedUpdate()
@@ -53,5 +64,22 @@ public class PlayerController : MonoBehaviour
         );
 
         //GetComponent<Rigidbody>().rotation = Quaternion.Euler(0.0f, 0.0f, GetComponent<Rigidbody>().velocity.x * -tilt);
+    }
+
+    public void DamagePlayer()
+    {
+        health--;
+        if (health <= 0)
+        {
+            //game over
+            gameController.GameOver();
+            UpdateHealthText();
+            Destroy(gameObject);
+        }
+    }
+
+    void UpdateHealthText()
+    {
+        healthText.text = ("Health: " + health);
     }
 }

@@ -13,11 +13,11 @@ public class GameController : MonoBehaviour
     public float startWait;
     public float waveWait;
 
-    //public Text scoreText;
+    public Text scoreText;
     //public Text restartText;
-    //public Text gameOverText;
+    public Text gameOverText;
 
-    //private bool gameOver;
+    private bool gameOver;
     private bool restart;
     private int score;
 
@@ -26,12 +26,14 @@ public class GameController : MonoBehaviour
 
     int nextBeat;
 
+    FMOD.Studio.EventInstance musicInstance;
+
     void Start()
     {
-        //gameOver = false;
+        gameOver = false;
         restart = false;
         //restartText.text = "";
-        //gameOverText.text = "";
+        gameOverText.text = "";
         score = 0;
         UpdateScore();
         nextBeat = spawnOffset;
@@ -69,12 +71,15 @@ public class GameController : MonoBehaviour
 
     void UpdateScore()
     {
-        //scoreText.text = "Score: " + score;
+        scoreText.text = "Score: " + score;
     }
 
     public void GameOver()
     {
-        //gameOverText.text = "Game Over!";
-        //gameOver = true;
+        // play game over music
+        //musicInstance = FMODUnity.RuntimeManager.CreateInstance("event:/Debug/BadEnd");
+        GameObject.Find("BGM").GetComponent<BGM>().SwitchToGameOverMusic();
+        gameOverText.text = "Game Over!";
+        gameOver = true;
     }
 }
