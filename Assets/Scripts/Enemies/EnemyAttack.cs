@@ -27,7 +27,7 @@ public class EnemyAttack : MonoBehaviour {
         }
     }
 
-    public void Fire()
+    public virtual void Fire()
     {
         GetTarget();
         var obj = Instantiate(shot, shotSpawn.position + new Vector3(-1, 0, 0), shotSpawn.rotation);
@@ -35,7 +35,7 @@ public class EnemyAttack : MonoBehaviour {
         obj.GetComponent<ProjectileMover>().target = target;
     }
 
-    public void GetTarget()
+    public virtual void GetTarget()
     {
         //if (GameObject.Find("Player") != null)
         //{

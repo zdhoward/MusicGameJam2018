@@ -17,7 +17,7 @@ public class EnemyController : MonoBehaviour {
         Move();
 	}
 
-    void Move()
+    public virtual void Move()
     {
         transform.position = Vector2.MoveTowards(new Vector2(transform.position.x, transform.position.y), target, speed * Time.deltaTime);
     }

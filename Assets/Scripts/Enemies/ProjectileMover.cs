@@ -14,6 +14,7 @@ public class ProjectileMover : MonoBehaviour {
     {
         axis = transform.up;
         Move();
+        AddToStartup();
     }
 
     void Update()
@@ -26,5 +27,10 @@ public class ProjectileMover : MonoBehaviour {
     public virtual void Move()
     {
         transform.position = Vector2.MoveTowards(new Vector3(transform.position.x, transform.position.y, 0f), target, speed * Time.deltaTime);
+    }
+
+    public virtual void AddToStartup ()
+    {
+
     }
 }
