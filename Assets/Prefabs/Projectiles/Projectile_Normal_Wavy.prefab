@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 114751723412513444}
   m_Layer: 0
   m_Name: Projectile_Normal_Wavy
-  m_TagString: Untagged
+  m_TagString: Projectile_Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -91,7 +91,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosion: {fileID: 0}
-  playerExplosion: {fileID: 0}
   scoreValue: 20
 --- !u!114 &114751723412513444
 MonoBehaviour:

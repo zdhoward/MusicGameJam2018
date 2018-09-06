@@ -23,7 +23,6 @@ public class EnemyAttack : MonoBehaviour {
             shotSpawn = gameObject.transform;
             Fire();
             nextBeat += rateOfFire;
-            //Debug.Log(nextBeat + " : >= : " + BGM.beats);
         }
     }
 

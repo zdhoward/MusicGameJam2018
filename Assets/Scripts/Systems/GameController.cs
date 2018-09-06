@@ -21,7 +21,6 @@ public class GameController : MonoBehaviour
     private bool restart;
     private int score;
 
-    //int beat = BGM.beats;
     public int spawnOffset;
 
     int nextBeat;
@@ -53,7 +52,7 @@ public class GameController : MonoBehaviour
         {
             Vector3 spawnPosition = new Vector3(spawnValues.x, Random.Range(0, spawnValues.y), spawnValues.z);
             var tmp = SpawnEnemy(spawnPosition, hazards[0]);
-            tmp.GetComponent<EnemyController>().target = new Vector3(spawnPosition.x + 20, spawnPosition.y, 0);
+            tmp.GetComponent<EnemyController>().target = new Vector3(spawnPosition.x + 100, spawnPosition.y, 0);
             nextBeat += spawnOffset;
         }
     }
@@ -77,7 +76,6 @@ public class GameController : MonoBehaviour
     public void GameOver()
     {
         // play game over music
-        //musicInstance = FMODUnity.RuntimeManager.CreateInstance("event:/Debug/BadEnd");
         GameObject.Find("BGM").GetComponent<BGM>().SwitchToGameOverMusic();
         gameOverText.text = "Game Over!";
         gameOver = true;

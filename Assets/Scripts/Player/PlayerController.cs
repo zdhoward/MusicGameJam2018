@@ -31,8 +31,6 @@ public class PlayerController : MonoBehaviour
     {
         gameController = GameObject.Find("GameController").GetComponent<GameController>();
         shotSpawn = gameObject.transform;
-        //shotSpawn.position = gameObject.transform.position + new Vector3(3f,0f,0f);
-        //shotSpawn.rotation = gameObject.transform.rotation;
     }
 
     void Update()
@@ -41,9 +39,7 @@ public class PlayerController : MonoBehaviour
         {
             nextFire = Time.time + fireRate;
             var obj = Instantiate(shot, shotSpawn.position + new Vector3(1,0,0), shotSpawn.rotation);
-            //obj.GetComponent<ProjectileMover>().speed = 8;
             obj.GetComponent<ProjectileMover>().target = GameObject.Find("Player").transform.position + new Vector3(100f,0f,0f);
-            //GetComponent<AudioSource>().Play();
         }
 
         UpdateHealthText();
@@ -71,7 +67,6 @@ public class PlayerController : MonoBehaviour
         health--;
         if (health <= 0)
         {
-            //game over
             gameController.GameOver();
             UpdateHealthText();
             Destroy(gameObject);
