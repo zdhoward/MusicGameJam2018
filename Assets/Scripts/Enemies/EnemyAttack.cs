@@ -37,12 +37,12 @@ public class EnemyAttack : MonoBehaviour {
 
     public virtual void GetTarget()
     {
-        //if (GameObject.Find("Player") != null)
-        //{
+        if (GameObject.Find("Player") != null)
+        {
             target = GameObject.Find("Player").transform.position;// + new Vector3(-5, 0, 0);
-        //} else
-        //{
-        //    Debug.Log(target);
-        //}
+        } else
+        {
+            Debug.Log(target);
+        }
     }
 }

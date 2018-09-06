@@ -7,4 +7,9 @@ public class ProjectileMover_Player : ProjectileMover {
     {
         GetComponent<Rigidbody2D>().velocity = transform.right * speed;
     }
+
+    public override void Move() // disables this for parent class
+    {
+
+    }
 }

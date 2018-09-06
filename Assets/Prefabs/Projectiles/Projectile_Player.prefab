@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 50687578162648260}
   - component: {fileID: 70015652412641534}
   - component: {fileID: 114056443707863226}
-  - component: {fileID: 114218029634637690}
+  - component: {fileID: 114624340256669300}
   m_Layer: 0
   m_Name: Projectile_Player
   m_TagString: Untagged
@@ -93,7 +93,7 @@ MonoBehaviour:
   explosion: {fileID: 0}
   playerExplosion: {fileID: 0}
   scoreValue: 0
---- !u!114 &114218029634637690
+--- !u!114 &114624340256669300
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -101,10 +101,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1205793292915496}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fba34b3845165a546b0a3e75113619e7, type: 3}
+  m_Script: {fileID: 11500000, guid: 63c6d2e41ceaabe4395ac0f05aed2f8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
+  target: {x: 0, y: 0, z: 0}
+  frequency: 20
+  magnitude: 0.5
+  axis: {x: 0, y: 0, z: 0}
 --- !u!212 &212278181810369838
 SpriteRenderer:
   m_ObjectHideFlags: 1

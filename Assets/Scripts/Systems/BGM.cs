@@ -74,6 +74,8 @@ public class BGM : MonoBehaviour {
         musicInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
         musicInstance.release();
         timelineHandle.Free();
+        musicInstance.setUserData(IntPtr.Zero);
+
     }
 
     void OnGUI()
@@ -96,23 +98,29 @@ public class BGM : MonoBehaviour {
         instance.getUserData(out timelineInfoPtr);
 
         // Get the object to store beat and marker details
-        GCHandle timelineHandle = GCHandle.FromIntPtr(timelineInfoPtr);
-        TimelineInfo timelineInfo = (TimelineInfo)timelineHandle.Target;
 
-        switch (type)
+        if (timelineInfoPtr != IntPtr.Zero)
         {
-            case FMOD.Studio.EVENT_CALLBACK_TYPE.TIMELINE_BEAT:
-                {
-                    var parameter = (FMOD.Studio.TIMELINE_BEAT_PROPERTIES)Marshal.PtrToStructure(parameterPtr, typeof(FMOD.Studio.TIMELINE_BEAT_PROPERTIES));
-                    timelineInfo.currentMusicBar = BGM.beats = parameter.bar;
-                }
-                break;
-            case FMOD.Studio.EVENT_CALLBACK_TYPE.TIMELINE_MARKER:
-                {
-                    var parameter = (FMOD.Studio.TIMELINE_MARKER_PROPERTIES)Marshal.PtrToStructure(parameterPtr, typeof(FMOD.Studio.TIMELINE_MARKER_PROPERTIES));
-                    timelineInfo.lastMarker = parameter.name;
-                }
-                break;
+            GCHandle timelineHandle = GCHandle.FromIntPtr(timelineInfoPtr);
+            TimelineInfo timelineInfo = (TimelineInfo)timelineHandle.Target;
+
+
+            switch (type)
+            {
+                case FMOD.Studio.EVENT_CALLBACK_TYPE.TIMELINE_BEAT:
+                    {
+                        var parameter = (FMOD.Studio.TIMELINE_BEAT_PROPERTIES)Marshal.PtrToStructure(parameterPtr, typeof(FMOD.Studio.TIMELINE_BEAT_PROPERTIES));
+                        timelineInfo.currentMusicBar = BGM.beats = parameter.bar;
+                    }
+                    break;
+                case FMOD.Studio.EVENT_CALLBACK_TYPE.TIMELINE_MARKER:
+                    {
+                        var parameter = (FMOD.Studio.TIMELINE_MARKER_PROPERTIES)Marshal.PtrToStructure(parameterPtr, typeof(FMOD.Studio.TIMELINE_MARKER_PROPERTIES));
+                        timelineInfo.lastMarker = parameter.name;
+                    }
+                    break;
+            }
+
         }
         return FMOD.RESULT.OK;
     }
