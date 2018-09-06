@@ -8,19 +8,24 @@ public class BGM : MonoBehaviour {
 
     public static int beats;
 
+    int beatOffset = 0; // set to a higher number to freeze values every x beats
+    int nextBeat = 0;
+
+    String guiInfo = "";
+
     public static float [][] spectrum;
     FMOD.DSP fft;
-    static int lowEnd = 12;
-    static int midEnd = 24;
-    static int highEnd = 32;
-    static float [] lowEndBuffer;
-    static float bufferedLows;
-    static float [] midEndBuffer;
-    static float bufferedMids;
-    static float [] highEndBuffer;
-    static float bufferedHighs;
-    static int bufferSize = 5;
+    static int lowEnd = 12; // low band cutoff
+    static int midEnd = 24; // mid band cutoff
+    static int highEnd = 32; // high band cutoff
+    static int bufferSize = 10;
     static int bufferPosition = 0;
+    static float [] lowEndBuffer = new float[bufferSize];
+    static float bufferedLows;
+    static float [] midEndBuffer = new float[bufferSize];
+    static float bufferedMids;
+    static float [] highEndBuffer = new float[bufferSize];
+    static float bufferedHighs;
 
     const int WindowSize = 64;
 
@@ -61,6 +66,7 @@ public class BGM : MonoBehaviour {
     void Update()
     {
         UpdateFFT();
+        BufferMultibandFFT();
     }
 
     void OnDestroy()
@@ -72,9 +78,13 @@ public class BGM : MonoBehaviour {
 
     void OnGUI()
     {
-        String guiInfo = String.Format("BGM: Current Bar = {0}, Last Marker = {1}", timelineInfo.currentMusicBar, (string)timelineInfo.lastMarker);
-        guiInfo += String.Format(", lowEnd = {0}dB, midEnd = {1}dB, highEnd = {2}dB", GetFFTLows().ToString("0.00"), GetFFTMids().ToString("0.00"), GetFFTHighs().ToString("0.00")); //bufferedLows, bufferedMids, bufferedHighs);// 
-        //guiInfo += ", lowEnd = " + GetAvgFFTLows().ToString("0.00") + ", midEnd = " + GetAvgFFTMids().ToString("0.00") + ", highEnd = " + GetAvgFFTHighs().ToString("0.00");
+        if (BGM.beats >= nextBeat)
+        {
+            guiInfo = String.Format("BGM: Current Bar = {0}, Last Marker = {1}", timelineInfo.currentMusicBar, (string)timelineInfo.lastMarker);
+            guiInfo += String.Format(", lowEnd = {0}dB, midEnd = {1}dB, highEnd = {2}dB", bufferedLows.ToString("0"), bufferedMids.ToString("0"), bufferedHighs.ToString("0"));
+            //guiInfo += String.Format(", lowEnd = {0}dB, midEnd = {1}dB, highEnd = {2}dB", GetFFTLows().ToString("0.00"), GetFFTMids().ToString("0.00"), GetFFTHighs().ToString("0.00")); 
+            nextBeat += beatOffset;
+        }
         GUILayout.Box(guiInfo);
     }
 
@@ -114,7 +124,6 @@ public class BGM : MonoBehaviour {
         fft.getParameterData((int)FMOD.DSP_FFT.SPECTRUMDATA, out unmanagedData, out length);
         FMOD.DSP_PARAMETER_FFT fftData = (FMOD.DSP_PARAMETER_FFT)Marshal.PtrToStructure(unmanagedData, typeof(FMOD.DSP_PARAMETER_FFT));
         spectrum = fftData.spectrum;
-        BufferMultiband();
     }
 
     void StartFFT()
@@ -149,7 +158,14 @@ public class BGM : MonoBehaviour {
 
         for (int i = min; i <= max; i++)
         {
-            avg += spectrum[0][i];
+            try
+            {
+                avg += spectrum[0][i];
+            }
+            catch (Exception e)
+            {
+
+            }
         }
 
         return lin2dB(avg /= (max - min));
@@ -164,7 +180,14 @@ public class BGM : MonoBehaviour {
 
         for (int i = min; i <= max; i++)
         {
-            avg += spectrum[0][i];
+            try
+            {
+                avg += spectrum[0][i];
+            }
+            catch (Exception e)
+            {
+
+            }
         }
 
         return lin2dB(avg /= (max - min));
@@ -175,22 +198,28 @@ public class BGM : MonoBehaviour {
     {
         float avg = 0;
         int min = 0;
-        int max = lowEnd - 1;
+        int max = lowEnd;
 
         for (int i = min; i <= max; i++)
         {
-            avg += spectrum[0][i];
+            try
+            {
+                avg += spectrum[0][i];
+            } catch (Exception e)
+            {
+                
+            }
         }
 
         return lin2dB(avg /= (max - min));
     }
 
     // Buffer Low, Mids, and Highs
-    static void BufferMultiband()
+    static void BufferMultibandFFT()
     {
-        lowEndBuffer[bufferPosition] = GetFFTLows();
-        midEndBuffer[bufferPosition] = GetFFTMids();
-        highEndBuffer[bufferPosition] = GetFFTHighs();
+        lowEndBuffer[bufferPosition] = BGM.GetFFTLows();
+        midEndBuffer[bufferPosition] = BGM.GetFFTMids();
+        highEndBuffer[bufferPosition] = BGM.GetFFTHighs();
 
         float lowAvg = 0;
         float midAvg = 0;
