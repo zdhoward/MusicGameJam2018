@@ -21,7 +21,7 @@ public class GameController : MonoBehaviour
     private bool restart;
     private int score;
 
-    int beat = BGM.beats;
+    //int beat = BGM.beats;
     public int spawnOffset;
 
     int nextBeat;
