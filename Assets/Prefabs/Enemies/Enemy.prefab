@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c46792e6ff6eb244b556097afada7da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shot: {fileID: 1400185869172804, guid: c9de77cbdbd941343a4a0b766e906d11, type: 2}
+  shot: {fileID: 1400185869172804, guid: 0c1b1bc7cac271f4783e88815afe5af0, type: 2}
   target: {x: 0, y: 0, z: 0}
   shotSpawn: {fileID: 0}
   rateOfFire: 4
@@ -118,7 +118,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosion: {fileID: 0}
-  playerExplosion: {fileID: 0}
   scoreValue: 100
 --- !u!114 &114574454951249166
 MonoBehaviour:

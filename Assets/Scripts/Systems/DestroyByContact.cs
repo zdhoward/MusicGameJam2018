@@ -5,7 +5,6 @@ using UnityEngine;
 public class DestroyByContact : MonoBehaviour {
 
     public GameObject explosion;
-    public GameObject playerExplosion;
     public int scoreValue;
     private GameController gameController;
 
@@ -39,18 +38,17 @@ public class DestroyByContact : MonoBehaviour {
         {
             //Instantiate(playerExplosion, other.transform.position, other.transform.rotation);
             GameObject.Find("Player").GetComponent<PlayerController>().DamagePlayer();
+            Destroy(gameObject);
         }
 
-        if (this.tag != "Enemy")
+        if (other.tag == "Projectile_Player") // exempt enemy projectiles here if desired
         {
-            if (other.tag == "Projectile")
-            {
-                Destroy(other.gameObject);
-            }
+            Destroy(other.gameObject);
+            gameController.AddScore(scoreValue);
+            Destroy(gameObject);
         }
-        
 
-        gameController.AddScore(scoreValue);
-        Destroy(gameObject);
+
+
     }
 }
