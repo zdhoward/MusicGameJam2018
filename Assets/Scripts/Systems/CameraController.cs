@@ -26,7 +26,7 @@ public class CameraController : MonoBehaviour {
       
         if (Player != null)
         {
-            Vector3 target = new Vector3(Player.transform.position.x + look * 8f, pos.y, pos.z);
+            Vector3 target = new Vector3(Player.transform.position.x + look * 9f, pos.y, pos.z);
             transform.position = Vector3.Lerp(transform.position, target, 0.04f);
         }
             

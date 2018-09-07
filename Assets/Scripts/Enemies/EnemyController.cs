@@ -6,9 +6,12 @@ public class EnemyController : MonoBehaviour {
 
     public float speed;
     public Vector3 target;
+    public GameObject targetObject;
 
+    int nextBeat;
 	// Use this for initialization
 	void Start () {
+        targetObject = GameObject.Find("Player");
         Move();
     }
 	
@@ -19,6 +22,7 @@ public class EnemyController : MonoBehaviour {
 
     public virtual void Move()
     {
+        target = targetObject.transform.position;
         transform.position = Vector2.MoveTowards(new Vector2(transform.position.x, transform.position.y), target, speed * Time.deltaTime);
     }
 }

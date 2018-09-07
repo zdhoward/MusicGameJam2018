@@ -27,12 +27,14 @@ public class PlayerController : MonoBehaviour
 
     bool lookingRight = true;
 
-    GameController gameController;
 
+    GameController gameController;
+    float playerInitialScale;
     void Start()
     {
         gameController = GameObject.Find("GameController").GetComponent<GameController>();
         shotSpawn = gameObject.transform;
+        playerInitialScale = transform.localScale.x;
     }
 
     void Update()
@@ -42,11 +44,12 @@ public class PlayerController : MonoBehaviour
 
         if(lookingRight)
         {
-            transform.localScale  = new Vector3(4, 4, 1);
+            transform.localScale  = new Vector3(playerInitialScale, playerInitialScale, 1);
         }
         else
         {
-            transform.localScale = new Vector3(-4, 4, 1);
+            //Flip player sprite
+            transform.localScale = new Vector3(-playerInitialScale, playerInitialScale, 1);
         }
 
         if (Input.GetButton("Fire1") && Time.time > nextFire)
