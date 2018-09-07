@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Projectile_Player
   - Projectile_Enemy
+  - StaticBackground
   layers:
   - Default
   - TransparentFX
@@ -17,10 +18,10 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - PlayerProjectile
+  - Player
+  - EnemyProjectile
+  - Enemy
   - 
   - 
   - 
@@ -42,6 +43,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 2584081081
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Foreground
+    uniqueID: 2626015319
     locked: 0

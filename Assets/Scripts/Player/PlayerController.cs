@@ -25,21 +25,47 @@ public class PlayerController : MonoBehaviour
 
     public Text healthText;
 
-    GameController gameController;
+    bool lookingRight = true;
 
+
+    GameController gameController;
+    float playerInitialScale;
     void Start()
     {
         gameController = GameObject.Find("GameController").GetComponent<GameController>();
         shotSpawn = gameObject.transform;
+        playerInitialScale = transform.localScale.x;
     }
 
     void Update()
     {
+        float look = Camera.main.ScreenToViewportPoint(Input.mousePosition).x;
+        lookingRight = look > 0.5f ? true : false;
+
+        if(lookingRight)
+        {
+            transform.localScale  = new Vector3(playerInitialScale, playerInitialScale, 1);
+        }
+        else
+        {
+            //Flip player sprite
+            transform.localScale = new Vector3(-playerInitialScale, playerInitialScale, 1);
+        }
+
         if (Input.GetButton("Fire1") && Time.time > nextFire)
         {
             nextFire = Time.time + fireRate;
-            var obj = Instantiate(shot, shotSpawn.position + new Vector3(1,0,0), shotSpawn.rotation);
-            obj.GetComponent<ProjectileMover>().target = GameObject.Find("Player").transform.position + new Vector3(100f,0f,0f);
+            Vector3 diff = lookingRight ? new Vector3(0.9f, 0.9f, 0) : new Vector3(-0.9f, 0.9f, 0);
+
+            var obj = Instantiate(shot, shotSpawn.position + diff, shotSpawn.rotation);
+
+            Vector3 mousePos = Input.mousePosition;
+            mousePos.z = -10f;
+
+            Vector3 direction = Camera.main.ScreenToWorldPoint(mousePos) - transform.position;
+
+            obj.GetComponent<ProjectileMover>().target = direction * 100f;
+            obj.GetComponent<ProjectileMover_Player>().PlayerRight = lookingRight;
         }
 
         UpdateHealthText();
@@ -53,12 +79,13 @@ public class PlayerController : MonoBehaviour
         Vector2 movement = new Vector3(moveHorizontal, moveVertical);
         GetComponent<Rigidbody2D>().velocity = movement * speed;
 
+        
         GetComponent<Rigidbody2D>().position = new Vector2
         (
             Mathf.Clamp(GetComponent<Rigidbody2D>().position.x, boundary.xMin, boundary.xMax),
             Mathf.Clamp(GetComponent<Rigidbody2D>().position.y, boundary.yMin, boundary.yMax)
         );
-
+        
         //GetComponent<Rigidbody>().rotation = Quaternion.Euler(0.0f, 0.0f, GetComponent<Rigidbody>().velocity.x * -tilt);
     }
 

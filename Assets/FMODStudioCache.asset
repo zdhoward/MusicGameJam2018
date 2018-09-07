@@ -13,13 +13,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: 114534452794668906}
-  - {fileID: 114580208975016768}
+  - {fileID: 114194708599227848}
   EditorEvents:
   - {fileID: 114813566700853992}
   - {fileID: 114682564613692714}
-  MasterBankRef: {fileID: 114580208975016768}
+  MasterBankRef: {fileID: 114194708599227848}
   StringsBankRef: {fileID: 114534452794668906}
-  stringsBankWriteTime: 636718425775487037
+  stringsBankWriteTime: 636719198511235796
   cacheVersion: 2
 --- !u!114 &114012242327775330
 MonoBehaviour:
@@ -43,6 +43,25 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 0
+--- !u!114 &114194708599227848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: C:\Users\yarki\Desktop\GameDev\MGJ\Assets\Audio\FMOD Project\MusicGameJam2018\Build\Desktop\Master
+    Bank.bank
+  lastModified: 636719198511216161
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 4045280
+  Exists: 1
 --- !u!114 &114534452794668906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -55,7 +74,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: Assets\Audio\FMOD Project\MusicGameJam2018\Build\Desktop\Master Bank.strings.bank
-  lastModified: 636718425775487037
+  lastModified: 636719198511235796
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -94,7 +113,7 @@ MonoBehaviour:
   Path: event:/Debug/BadEnd
   guid: 2337e704a7f63f41a37c8ef9a01f0fa0
   Banks:
-  - {fileID: 114580208975016768}
+  - {fileID: 114194708599227848}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -116,7 +135,7 @@ MonoBehaviour:
   Path: event:/Debug/Random Event
   guid: 1acc7b58d6cae5469ceeae90847c0a27
   Banks:
-  - {fileID: 114580208975016768}
+  - {fileID: 114194708599227848}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
