@@ -10,6 +10,8 @@ public class ProjectileMover : MonoBehaviour {
     public float magnitude = 0.5f;   // Size of sine movement
     public Vector3 axis;
 
+    float aliveTime = 0.0f;
+
     void Start()
     {
         axis = transform.up;
@@ -22,6 +24,10 @@ public class ProjectileMover : MonoBehaviour {
         Move();
         if (transform.position == target)
             Destroy(gameObject);
+        if(aliveTime > 10f)
+        {
+            Destroy(gameObject);
+        }
     }
 
     public virtual void Move()
