@@ -33,18 +33,22 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         gameController = GameObject.Find("GameController").GetComponent<GameController>();
-        shotSpawn = gameObject.transform;
+        shotSpawn = transform.Find("Gun").transform;
         playerInitialScale = transform.localScale.x;
     }
 
     void Update()
     {
+        //This give a parallaxlike effect
+        float newScale = -(transform.position.y - boundary.yMax) / (boundary.yMax - boundary.yMin) * 0f;
+        
         float look = Camera.main.ScreenToViewportPoint(Input.mousePosition).x;
         lookingRight = look > 0.5f ? true : false;
 
         if(lookingRight)
         {
-            transform.localScale  = new Vector3(playerInitialScale, playerInitialScale, 1);
+            transform.localScale  = new Vector3(playerInitialScale+ newScale, playerInitialScale+ newScale, 1);
+            //transform.localScale = new Vector3(newScale, newScale, 1);
         }
         else
         {
@@ -55,14 +59,14 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButton("Fire1") && Time.time > nextFire)
         {
             nextFire = Time.time + fireRate;
-            Vector3 diff = lookingRight ? new Vector3(0.9f, 0.9f, 0) : new Vector3(-0.9f, 0.9f, 0);
+            //Vector3 diff = lookingRight ? new Vector3(0.9f, 0.9f, 0) : new Vector3(-0.9f, 0.9f, 0);
 
-            var obj = Instantiate(shot, shotSpawn.position + diff, shotSpawn.rotation);
+            var obj = Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
 
             Vector3 mousePos = Input.mousePosition;
             mousePos.z = -10f;
 
-            Vector3 direction = Camera.main.ScreenToWorldPoint(mousePos) - transform.position;
+            Vector3 direction = Camera.main.ScreenToWorldPoint(mousePos) - (shotSpawn.position);
 
             obj.GetComponent<ProjectileMover>().target = direction * 100f;
             obj.GetComponent<ProjectileMover_Player>().PlayerRight = lookingRight;

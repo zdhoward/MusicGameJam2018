@@ -19,7 +19,7 @@ public class ProjectileMover_Player : ProjectileMover {
             angle = Vector2.Angle((target - transform.position), Vector3.down);
         }
         
-        Debug.Log(angle);
+        //Debug.Log(angle);
         transform.Rotate(Vector3.forward, -angle+90f);
         
     }
