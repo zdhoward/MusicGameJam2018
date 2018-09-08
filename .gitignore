@@ -1,17 +1,16 @@
 [Ll]ibrary/
-Library/*
 [Tt]emp/
 [Oo]bj/
 [Bb]uild/
-
 [Bb]uilds/
 Assets/AssetStoreTools*
 
 #FMOD Stuff
 # Build must be allowed for FMOD
 !Assets\Audio\FMOD Project\Build
-fmod.log
-fmod_editor.log
+*.log
+Library/assetDatabase3
+Library/metadata/*
 
 # Visual Studio cache directory
 .vs/
