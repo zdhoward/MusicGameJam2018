@@ -27,6 +27,8 @@ public class GameController : MonoBehaviour
 
     FMOD.Studio.EventInstance musicInstance;
 
+    GameObject player;
+
     void Start()
     {
         gameOver = false;
@@ -36,6 +38,8 @@ public class GameController : MonoBehaviour
         score = 0;
         UpdateScore();
         nextBeat = spawnOffset;
+
+        player = GameObject.Find("Player");
     }
 
     void Update()
@@ -50,7 +54,7 @@ public class GameController : MonoBehaviour
 
         if (BGM.beats >= nextBeat)
         {
-            Vector3 spawnPosition = new Vector3(spawnValues.x, Random.Range(0, spawnValues.y), spawnValues.z);
+            Vector3 spawnPosition = new Vector3(player.transform.position.x + 20, Random.Range(0, spawnValues.y), spawnValues.z);
             var tmp = SpawnEnemy(spawnPosition, hazards[0]);
             tmp.GetComponent<EnemyController>().target = new Vector3(spawnPosition.x + 100, spawnPosition.y, 0);
             nextBeat += spawnOffset;
