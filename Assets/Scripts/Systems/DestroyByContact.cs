@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class DestroyByContact : MonoBehaviour {
 
+    public GameObject ActualObject;
     public GameObject explosion;
     public int scoreValue;
     private GameController gameController;
+    public bool WeakPoint;
+    
 
     void Start()
     {
@@ -23,6 +26,14 @@ public class DestroyByContact : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        if(tag == "Projectile_Player")
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+
+        
         if (other.tag == "Boundary" || other.tag == "Enemy")
         {
             return;
@@ -36,17 +47,37 @@ public class DestroyByContact : MonoBehaviour {
         
         if (other.tag == "Player")
         {
+
+
+
             //Instantiate(playerExplosion, other.transform.position, other.transform.rotation);
             GameObject.Find("Player").GetComponent<PlayerController>().DamagePlayer();
-            Destroy(gameObject);
+            Destroy(ActualObject.gameObject);
         }
 
         if (other.tag == "Projectile_Player") // exempt enemy projectiles here if desired
         {
-            Destroy(other.gameObject);
-            gameController.AddScore(scoreValue);
-            Destroy(gameObject);
+            Debug.Log(ActualObject.transform.tag);
+            if (ActualObject.transform.tag == "Enemy")
+            {
+                var ea = ActualObject.GetComponent<MinionAttack>();
+
+                if (WeakPoint)
+                    ea.Health--;
+                Destroy(other.gameObject);
+                if (ea.Health < 0)
+                {
+                    Destroy(ActualObject.gameObject);
+
+                }
+            }
+            else
+            {
+                gameController.AddScore(scoreValue);
+                Destroy(ActualObject.gameObject);
+            }
         }
+
 
 
 

@@ -25,7 +25,7 @@ public class MinionAttack : EnemyAttack {
 
     void HurlToPlayer()
     {
-        Debug.Log("Hurling");
+
         Vector3 dir = (target - transform.position).normalized;
         var a = transform.DOMove(transform.position + dir * 3f, 0.5f);
         //a.SetEase(Ease.InBounce);

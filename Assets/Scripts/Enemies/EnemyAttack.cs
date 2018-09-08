@@ -10,6 +10,8 @@ public class EnemyAttack : MonoBehaviour {
     public int rateOfFire;
     public int beatOffset;
 
+    public int Health;
+
     public int nextBeat;
 
 	void Start () {

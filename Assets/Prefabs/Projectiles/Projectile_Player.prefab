@@ -21,9 +21,9 @@ GameObject:
   - component: {fileID: 4287800292675720}
   - component: {fileID: 212278181810369838}
   - component: {fileID: 50687578162648260}
-  - component: {fileID: 114056443707863226}
   - component: {fileID: 114624340256669300}
   - component: {fileID: 61437191949202352}
+  - component: {fileID: 114868370526822072}
   m_Layer: 8
   m_Name: Projectile_Player
   m_TagString: Projectile_Player
@@ -73,7 +73,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -89,19 +89,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.01, y: 0.01}
   m_EdgeRadius: 0
---- !u!114 &114056443707863226
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1205793292915496}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6f937fc5c75c5544a25831b99a71efd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  explosion: {fileID: 0}
-  scoreValue: 0
 --- !u!114 &114624340256669300
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -119,6 +106,21 @@ MonoBehaviour:
   magnitude: 0.5
   axis: {x: 0, y: 0, z: 0}
   PlayerRight: 0
+--- !u!114 &114868370526822072
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1205793292915496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6f937fc5c75c5544a25831b99a71efd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ActualObject: {fileID: 1205793292915496}
+  explosion: {fileID: 0}
+  scoreValue: 0
+  WeakPoint: 0
 --- !u!212 &212278181810369838
 SpriteRenderer:
   m_ObjectHideFlags: 1

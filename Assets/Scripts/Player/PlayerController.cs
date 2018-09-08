@@ -56,7 +56,7 @@ public class PlayerController : MonoBehaviour
             transform.localScale = new Vector3(-playerInitialScale, playerInitialScale, 1);
         }
 
-        if (Input.GetButton("Fire1") && Time.time > nextFire)
+        if (Input.GetButtonDown("Fire1") && Time.time > nextFire)
         {
             nextFire = Time.time + fireRate;
             //Vector3 diff = lookingRight ? new Vector3(0.9f, 0.9f, 0) : new Vector3(-0.9f, 0.9f, 0);

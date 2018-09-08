@@ -7,7 +7,8 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour
 {
     public GameObject[] hazards;
-    public Vector3 spawnValues;
+    public Vector3 SpawnValuesMin;
+    public Vector3 SpawnValuesMax;
     public int hazardCount;
     public float spawnWait;
     public float startWait;
@@ -54,10 +55,11 @@ public class GameController : MonoBehaviour
 
         if (BGM.beats >= nextBeat)
         {
-            Vector3 spawnPosition = new Vector3(player.transform.position.x + 20, Random.Range(0, spawnValues.y), spawnValues.z);
+            Vector3 spawnPosition = new Vector3(player.transform.position.x + 20, Random.Range(SpawnValuesMin.y, SpawnValuesMax.y), SpawnValuesMax.z);
             var tmp = SpawnEnemy(spawnPosition, hazards[0]);
             tmp.GetComponent<EnemyController>().target = new Vector3(spawnPosition.x + 100, spawnPosition.y, 0);
             nextBeat += spawnOffset;
+
         }
     }
     
