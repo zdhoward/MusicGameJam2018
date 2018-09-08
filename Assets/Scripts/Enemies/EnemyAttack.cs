@@ -10,10 +10,11 @@ public class EnemyAttack : MonoBehaviour {
     public int rateOfFire;
     public int beatOffset;
 
-    int nextBeat;
+    public int nextBeat;
 
 	void Start () {
         nextBeat = BGM.beats + beatOffset;
+        GetTarget();
     }
 
     void Update()
@@ -28,7 +29,7 @@ public class EnemyAttack : MonoBehaviour {
 
     public virtual void Fire()
     {
-        GetTarget();
+        
         var obj = Instantiate(shot, shotSpawn.position + new Vector3(-1, 0, 0), shotSpawn.rotation);
         obj.GetComponent<ProjectileMover>().speed = rateOfFire;
         obj.GetComponent<ProjectileMover>().target = target;

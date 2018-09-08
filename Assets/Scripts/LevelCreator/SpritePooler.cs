@@ -46,7 +46,6 @@ public class SpritePooler : MonoBehaviour {
         cameraRectRight = CAMRIGHT + Camera.main.transform.position.x;
 
 
-        Debug.Log(cameraRectRight);
 
         if (leftmostX > cameraRectLeft + 10)
         {
