@@ -27,23 +27,32 @@ public class PlayerController : MonoBehaviour
 
     bool lookingRight = true;
 
-
+    Animator animator;
     GameController gameController;
     float playerInitialScale;
     void Start()
     {
         gameController = GameObject.Find("GameController").GetComponent<GameController>();
         shotSpawn = transform.Find("Gun").transform;
+        animator = GetComponent<Animator>();
         playerInitialScale = transform.localScale.x;
     }
 
     void Update()
     {
+        //Debug.Log(GetComponent<Rigidbody2D>().velocity.x);
+
+        animator.SetFloat("Speed", Mathf.Abs(GetComponent<Rigidbody2D>().velocity.magnitude));
         //This give a parallaxlike effect
         float newScale = -(transform.position.y - boundary.yMax) / (boundary.yMax - boundary.yMin) * 0f;
         
         float look = Camera.main.ScreenToViewportPoint(Input.mousePosition).x;
         lookingRight = look > 0.5f ? true : false;
+
+        if(GetComponent<Rigidbody2D>().velocity.magnitude > 0)
+        {
+            lookingRight = GetComponent<Rigidbody2D>().velocity.x > 0 ? true : false;
+        }
 
         if(lookingRight)
         {

@@ -190,7 +190,7 @@ public class BGM : MonoBehaviour {
             }
             catch (Exception e)
             {
-                Debug.Log(e);
+                //Debug.Log(e);
             }
         }
 
